@@ -1,4 +1,4 @@
-const products = [
+const items = [
   {
     name: "Kong Classic Bone Dog Toy",
     imageURL: "https://images.unsplash.com/photo-1535294435445-d7249524ef2e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZG9nJTIwdG95fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
@@ -37,4 +37,4 @@ const products = [
   },
 ];
 
-module.exports = products;
+module.exports = items;
