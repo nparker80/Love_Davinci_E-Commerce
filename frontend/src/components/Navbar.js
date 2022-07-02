@@ -14,13 +14,17 @@ const Navbar = () => {
           <Link to="/cart">
             <i className="fas fa-shopping-cart"></i>
             Cart
-            <span className="cartlogo__badge">0</span>
+            <span className="cartlogo__badge"> 0</span>
+          </Link>
+        </li>
+        <li>
+          <Link to="/shop">
+            Shop
           </Link>
         </li>
         <li>
           <Link to="/">
-            Shop
-            <span className="cartlogo__badge">0</span>
+            Home
           </Link>
         </li>
       </ul>
