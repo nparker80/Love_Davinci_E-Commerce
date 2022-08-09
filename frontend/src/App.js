@@ -17,7 +17,7 @@ function App() {
     <Router>
       <Navbar click={() => { setSideToggle(true) }} />
       <Back show={sideToggle} click={() => { setSideToggle(false) }} />
-      <Sidebar show={sideToggle} />
+      <Sidebar show={sideToggle} click={() => { setSideToggle(false) }} />
       <main>
         <Routes>
           <Route exact path="/" element={<Home />} />
