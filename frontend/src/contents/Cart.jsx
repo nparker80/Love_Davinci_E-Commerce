@@ -2,7 +2,7 @@ import "./Cart.scss";
 import CartProduct from "../components/CartProduct";
 
 const Cart = () => {
-  return <div className="cartproduct">
+  return <div className="cartscreen">
     <div className="cartscreen__left">
       <h2>Shopping Cart</h2>
       <CartProduct />
