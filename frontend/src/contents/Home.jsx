@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Product from "../components/Product";
 
 //Actions
-import { getProducts as listProducts } from "../redux/actions/productActions";
+import { getProducts as listProducts } from "../redux/actions/itemActions";
 
 const Home = () => {
   const dispatch = useDispatch();

@@ -1,19 +1,19 @@
-import * as actionTypes from "../constants/productConstants";
+import * as actionTypes from "../constants/itemConstants";
 import axios from "axios";
 
 export const getProducts = () => async (dispatch) => {
   try {
-    dispatch({ type: actionTypes.GET_PRODUCTS_REQUEST });
+    dispatch({ type: actionTypes.GET_ITEMS_REQUEST });
 
     const { data } = await axios.get("/api/items");
 
     dispatch({
-      type: actionTypes.GET_PRODUCTS_SUCCESS,
+      type: actionTypes.GET_ITEMS_SUCCESS,
       payload: data,
     });
   } catch (error) {
     dispatch({
-      type: actionTypes.GET_PRODUCTS_FAIL,
+      type: actionTypes.GET_ITEMS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -24,17 +24,17 @@ export const getProducts = () => async (dispatch) => {
 
 export const getProductDetails = (id) => async (dispatch) => {
   try {
-    dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_REQUEST });
+    dispatch({ type: actionTypes.GET_ITEM_DETAILS_REQUEST });
 
     const { data } = await axios.get(`/api/items/${id}`);
 
     dispatch({
-      type: actionTypes.GET_PRODUCT_DETAILS_SUCCESS,
+      type: actionTypes.GET_ITEM_DETAILS_SUCCESS,
       payload: data,
     });
   } catch (error) {
     dispatch({
-      type: actionTypes.GET_PRODUCT_DETAILS_FAIL,
+      type: actionTypes.GET_ITEM_DETAILS_FAIL,
       payload:
         error.response && error.response.data.message
           ? error.response.data.message
@@ -44,5 +44,5 @@ export const getProductDetails = (id) => async (dispatch) => {
 };
 
 export const removeProductDetails = () => (dispatch) => {
-  dispatch({ type: actionTypes.GET_PRODUCT_DETAILS_RESET });
+  dispatch({ type: actionTypes.GET_ITEM_DETAILS_RESET });
 };
