@@ -20,7 +20,7 @@ const CartProduct = () => {
       <button className="cartproduct__delete">
         <i className="fas fa-trash"></i>
       </button>
-    </div>);
+    </div>)
 }
 
 export default CartProduct

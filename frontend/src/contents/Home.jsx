@@ -32,7 +32,7 @@ const Home = () => {
             name={product.name}
             description={product.description}
             price={product.price}
-            imageUrl={product.imageUrl}
+            imageURL={product.imageURL}
             productId={product._id} />
         ))
       )}
