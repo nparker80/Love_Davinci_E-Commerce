@@ -4,7 +4,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 // Components
-import CartItem from "../components/CartProduct";
+import CartProduct from "../components/CartProduct";
 
 // Actions
 import { addToCart, removeFromCart } from "../redux/actions/cartActions";
@@ -47,7 +47,7 @@ const Cart = () => {
             </div>
           ) : (
             cartItems.map((item) => (
-              <CartItem
+              <CartProduct
                 key={item.product}
                 item={item}
                 qtyChangeHandler={qtyChangeHandler}
@@ -70,4 +70,4 @@ const Cart = () => {
     </>
   );
 };
-export default Cart
+export default Cart;
