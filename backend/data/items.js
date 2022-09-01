@@ -8,7 +8,7 @@ const items = [
   },
 
   {
-    name: "Merrick Fresh Kisses Double-Brush Mint Breath Strip Infused Medium Dental Dog Treats",
+    name: "Merrick Mint Dental Dog Treats",
     imageURL: "https://images.unsplash.com/photo-1604544203292-0daa7f847478?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTB8fGRvZyUyMGZvb2R8ZW58MHx8MHx8&auto=format&fit=crop&w=500&q=60",
     description: "Say goodbye to less-than-fresh doggy breath with Merrick Fresh Kisses Double-Brush Dental Dog Treats With Mint Breath Strips For Medium Dogs. Created specifically for medium-sized dogs, these natural dental treats help your pup achieve cleaner teeth and truly fresh breath through healthy chewing. Their unique texture is soft enough to help clean plaque and tartar from teeth, but tough enough to last through satisfying chew sessions. All-natural, spearmint-flavored breath strip pieces freshen your dog’s breath as he chews, too. Made in the USA without grains, gluten or potatoes, these dental treats contain only ten all-natural, easy-to-digest ingredients. Your pup will love these fresh-tasting dental treats!",
     inventory: 5,
