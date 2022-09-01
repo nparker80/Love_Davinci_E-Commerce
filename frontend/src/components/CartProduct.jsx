@@ -1,21 +1,20 @@
 import "./CartProduct.scss";
 import { Link } from 'react-router-dom';
 
-const CartProduct = () => {
+const CartProduct = (item, qtyChangeHandler) => {
   return (
     <div className="cartproduct">
       <div className="cartproduct__image">
-        <img src={"https://images.unsplash.com/photo-1535294435445-d7249524ef2e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8ZG9nJTIwdG95fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60"} alt="purchased product" />
+        <img src={item.imageURL} alt={item.name} />
       </div>
-      <Link to={`/product/${111}`} className="cartproduct__name">
-        <p>Product Name</p>
+      <Link to={`/product/${item.product}`} className="cartproduct__name">
+        <p>{item.name}</p>
       </Link>
-      <p className="cartproduct__price">$14.99</p>
-      <select className="cartproduct__select">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
+      <p className="cartproduct__price">${item.price}</p>
+      <select className="cartproduct__select" value={item.qty} onChange={(e) => qtyChangeHandler(item.product, e.target.value)}>
+        {[...Array(item.inventory).keys()].map((x) => (
+          <option key={x + 1} value={x + 1}>{x + 1}</option>
+        ))}
       </select>
       <button className="cartproduct__delete">
         <i className="fas fa-trash"></i>

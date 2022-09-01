@@ -1,12 +1,13 @@
 import './Product.scss';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 
 import { getProductDetails } from '../redux/actions/itemActions';
 import { addToCart } from '../redux/actions/cartActions';
 
-const Product = ({ history }) => {
+const Product = () => {
+  const history = useNavigate();
   const { id } = useParams();
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
@@ -22,7 +23,7 @@ const Product = ({ history }) => {
 
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, qty));
-    history.push(`/cart`);
+    history(`/cart`);
   };
 
 
@@ -54,7 +55,7 @@ const Product = ({ history }) => {
               </select>
             </p>
             <p>
-              <button type="button">Add to Cart</button>
+              <button type="button" onClick={addToCartHandler}>Add to Cart</button>
             </p>
           </div>
         </div>
