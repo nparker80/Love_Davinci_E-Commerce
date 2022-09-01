@@ -44,13 +44,15 @@ const Product = ({ history }) => {
             <p>
               Price: <span>${product.price}</span>
             </p>
-            <p>Status: <span>{product.inventory > 0 ? "In Stock" : "Out of Stock"}</span></p>
-            <p>Qty <select>
-              <option value="1">1</option>
-              <option value="2">2</option>
-              <option value="3">3</option>
-              <option value="4">4</option>
-            </select></p>
+            <p>Status: {" "}
+              <span>{product.inventory > 0 ? "In Stock" : "Out of Stock"}</span></p>
+            <p>Qty
+              <select value={qty} onChange={(e) => setQty(e.target.value)}>
+                {[...Array(product.inventory).keys()].map((x) => (
+                  <option key={x + 1} value={x + 1}>{x + 1}</option>
+                ))}
+              </select>
+            </p>
             <p>
               <button type="button">Add to Cart</button>
             </p>
