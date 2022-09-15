@@ -1,12 +1,13 @@
 const bcrypt = require("bcrypt");
 const Joi = require("joi");
 const express = require("express");
-const { User } = require("../models/User");
+const User = require("../models/User");
+const authToken = require("../utils/auth");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
   const schema = Joi.object({
-    username: Joi.string().min(3).max(15).required(),
+    name: Joi.string().min(3).max(15).required(),
     email: Joi.string().min(3).max(200).required().email(),
     password: Joi.string().min(6).required(),
 
@@ -20,7 +21,7 @@ router.post("/", async (req, res) => {
   if (user) return res.status(400).send("An account associated with this email exists. Please sign in or register with a new email.");
 
   user = new User({
-    username: req.body.username,
+    name: req.body.name,
     email: req.body.email,
     password: req.body.password
   });
@@ -28,5 +29,11 @@ router.post("/", async (req, res) => {
   const salt = await bcrypt.genSalt(10)
   user.password = await bcrypt.hash(user.password, salt)
 
-  await user.save();
+  user = await user.save();
+
+  const token = authToken(user);
+
+  res.send(token);
 });
+
+module.exports = router;
