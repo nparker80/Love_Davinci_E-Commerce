@@ -7,7 +7,6 @@ const router = express.Router();
 
 router.post("/", async (req, res) => {
   const schema = Joi.object({
-    name: Joi.string().min(3).max(15).required(),
     email: Joi.string().min(3).max(200).required().email(),
     password: Joi.string().min(6).required(),
 
@@ -18,18 +17,11 @@ router.post("/", async (req, res) => {
 
   let user = await User.findOne({ email: req.body.email })
 
-  if (user) return res.status(400).send("User account exists. Please sign in or register with a new email.");
+  if (!user) return res.status(400).send("User account does not exist. Please create an account.");
 
-  user = new User({
-    name: req.body.name,
-    email: req.body.email,
-    password: req.body.password
-  });
-
-  const salt = await bcrypt.genSalt(10)
-  user.password = await bcrypt.hash(user.password, salt)
-
-  user = await user.save();
+  const validPassword = await bcrypt.compare(req.body.password, user.password);
+  if (!validPassword)
+    return res.status(400).send("Invalid email or password...");
 
   const token = authToken(user);
 
