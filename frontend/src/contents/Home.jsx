@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Product from "../components/Product";
 
 //Actions
-import { getProducts as listProducts } from "../redux/actions/itemActions";
+import { getProducts as listProducts } from "../redux/actions/productActions";
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -32,7 +32,7 @@ const Home = () => {
             name={product.name}
             description={product.description}
             price={product.price}
-            imageURL={product.imageURL}
+            imageUrl={product.imageUrl}
             productId={product._id} />
         ))
       )}

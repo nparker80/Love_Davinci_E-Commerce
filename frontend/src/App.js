@@ -1,6 +1,6 @@
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './App.css';
-import { useState } from 'react';
-import { BrowserRouter as Router, Routes, Route, useParams } from 'react-router-dom';
 
 import Home from './contents/Home';
 import Product from './contents/Product';
@@ -20,6 +20,7 @@ function App() {
       <Sidebar show={sideToggle} click={() => { setSideToggle(false) }} />
       <main>
         <Routes>
+
           <Route exact path="/" element={<Home />} />
           <Route exact path="/product/:id" element={<Product />} />
           <Route exact path="/cart" element={<Cart />} />

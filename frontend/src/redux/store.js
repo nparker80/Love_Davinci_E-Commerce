@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from "./reducers/cartReducers";
-import { getProductsReducer, getProductDetailsReducer } from './reducers/itemReducers';
+import { getProductsReducer, getProductDetailsReducer } from './reducers/productReducers';
 
 
 const cartItemsInLocalStorage = localStorage.getItem("cart")

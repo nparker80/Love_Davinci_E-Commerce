@@ -1,9 +1,9 @@
 import './Product.scss'
 import { Link } from 'react-router-dom'
-const Product = ({ imageURL, name, price, description, productId }) => {
+const Product = ({ imageUrl, name, price, description, productId }) => {
   return (
     <div className="product">
-      <img src={imageURL} alt={name} />
+      <img src={imageUrl} alt={name} />
       <div className="product__info">
         <p className="info__name">{name}</p>
         <p className="info__description">{description.substring(0, 100)}...

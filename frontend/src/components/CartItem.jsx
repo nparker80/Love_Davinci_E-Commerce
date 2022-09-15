@@ -1,11 +1,11 @@
-import "./CartProduct.scss";
+import "./CartItem.scss";
 import { Link } from "react-router-dom";
 
-const CartProduct = ({ item, qtyChangeHandler, removeHandler }) => {
+const CartItem = ({ item, qtyChangeHandler, removeHandler }) => {
   return (
     <div className="cartproduct">
       <div className="cartproduct__image">
-        <img src={item.imageURL} alt={item.name} />
+        <img src={item.imageUrl} alt={item.name} />
       </div>
       <Link to={`/product/${item.product}`} className="cartproduct__name">
         <p>{item.name}</p>
@@ -16,7 +16,7 @@ const CartProduct = ({ item, qtyChangeHandler, removeHandler }) => {
         onChange={(e) => qtyChangeHandler(item.product, e.target.value)}
         className="cartproduct__select"
       >
-        {[...Array(item.inventory).keys()].map((x) => (
+        {[...Array(item.countInStock).keys()].map((x) => (
           <option key={x + 1} value={x + 1}>
             {x + 1}
           </option>
@@ -33,4 +33,4 @@ const CartProduct = ({ item, qtyChangeHandler, removeHandler }) => {
 };
 
 
-export default CartProduct
+export default CartItem
