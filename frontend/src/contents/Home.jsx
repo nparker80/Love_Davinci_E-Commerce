@@ -12,6 +12,8 @@ const Home = () => {
   const dispatch = useDispatch();
 
   const getProducts = useSelector((state) => state.getProducts);
+  const auth = useSelector((state) => state.auth);
+  console.log(auth);
   const { products, loading, error } = getProducts;
 
   useEffect(() => {

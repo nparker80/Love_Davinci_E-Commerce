@@ -9,6 +9,7 @@ import Cart from './contents/Cart';
 import Navbar from './components/Navbar';
 import Back from './components/Back';
 import Sidebar from './components/Sidebar';
+import Register from './components/auth/register';
 
 function App() {
 
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/product/:id" element={<Product />} />
           <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/register" element={<Register />} />
         </Routes>
       </main>
     </Router>

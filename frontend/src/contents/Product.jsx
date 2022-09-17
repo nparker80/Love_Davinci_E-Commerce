@@ -7,7 +7,7 @@ import { getProductDetails } from '../redux/actions/productActions';
 import { addToCart } from '../redux/actions/cartActions';
 
 const Product = () => {
-  const history = useNavigate();
+  const navigate = useNavigate();
   const { id } = useParams();
   const [qty, setQty] = useState(1);
   const dispatch = useDispatch();
@@ -23,7 +23,7 @@ const Product = () => {
 
   const addToCartHandler = () => {
     dispatch(addToCart(product._id, qty));
-    history(`/cart`);
+    navigate(`/cart`);
   };
 
 
