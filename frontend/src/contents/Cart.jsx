@@ -1,8 +1,7 @@
 import "./Cart.scss";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import StripeCheckout from "react-stripe-checkout"
 
 // Components
 import CartItem from "../components/CartItem";
@@ -11,7 +10,7 @@ import CartItem from "../components/CartItem";
 import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
 
-// const KEY = process.env.REACT_APP_STRIPE;
+
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -19,11 +18,7 @@ const Cart = () => {
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
 
-  // const [stripeToken, setStripeToken] = useState(null);
 
-  // const onToken = (token) => {
-  //   setStripeToken(token);
-  // };
   useEffect(() => { }, []);
 
   const qtyChangeHandler = (id, qty) => {
@@ -70,13 +65,7 @@ const Cart = () => {
           <div className="cartscreen__info">
             <p>Subtotal ({getCartCount()}) items</p>
             <p>${getCartSubTotal()}</p>
-            {/* <StripeCheckout
-              name="Persnickety Pups"
-              billingAddress
-              shippingAddress
-              token={onToken}
-              stripeKey={KEY}
-            ></StripeCheckout> */}
+
           </div>
           <div>
             <button>Proceed To Checkout</button>

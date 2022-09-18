@@ -1,6 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { decode } from 'jsonwebtoken';
+// import { decode } from 'jsonwebtoken';
 import { url } from './api';
 import jwtDecode from "jwt-decode";
 
