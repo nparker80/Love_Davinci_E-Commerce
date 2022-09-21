@@ -9,7 +9,7 @@ import Cart from './contents/Cart';
 import Navbar from './components/Navbar';
 import Back from './components/Back';
 import Sidebar from './components/Sidebar';
-import Register from './components/auth/register';
+import Register from './components/auth/Register';
 
 function App() {
 
