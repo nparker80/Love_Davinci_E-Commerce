@@ -1,11 +1,12 @@
 import "./Navbar.scss";
+import styled from 'styled-components';
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 const Navbar = ({ click }) => {
   const cart = useSelector((state) => state.cart);
+  const auth = useSelector((state) => state.auth);
   const { cartItems } = cart;
-
   const getCartCount = () => {
     return cartItems.reduce((qty, item) => Number(item.qty) + qty, 0);
   };
@@ -29,14 +30,34 @@ const Navbar = ({ click }) => {
           <Link to="/">Shop</Link>
         </li>
       </ul>
-
       <div className="hamburger__menu" onClick={click}>
         <div></div>
         <div></div>
         <div></div>
       </div>
+
+      {
+        auth._id ? <Logout>Logout</Logout> :
+          <AuthLinks>
+            <Link to="/login">Login</Link>
+            <Link to="register">Register</Link>
+          </AuthLinks>
+      }
     </nav>
   );
 };
 
 export default Navbar;
+
+const AuthLinks = styled.div`
+  a {
+    &:last-child {
+      margin-left: 1rem;
+    }
+  }
+`;
+
+const Logout = styled.div`
+  color: white;
+  cursor: pointer;
+`;

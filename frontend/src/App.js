@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { loadUser } from "./redux/slices/authSlice";
 import './App.css';
 
 import Home from './contents/Home';
@@ -12,7 +14,11 @@ import Sidebar from './components/Sidebar';
 import Register from './components/auth/Register';
 
 function App() {
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(loadUser(null));
+  }, [dispatch]);
   const [sideToggle, setSideToggle] = useState(false);
   return (
     <Router>
