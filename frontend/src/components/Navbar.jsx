@@ -1,9 +1,11 @@
 import "./Navbar.scss";
 import styled from 'styled-components';
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logoutUser } from "../redux/slices/authSlice";
 
 const Navbar = ({ click }) => {
+  const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const auth = useSelector((state) => state.auth);
   const { cartItems } = cart;
@@ -36,13 +38,20 @@ const Navbar = ({ click }) => {
         <div></div>
       </div>
 
-      {
-        auth._id ? <Logout>Logout</Logout> :
-          <AuthLinks>
-            <Link to="/login">Login</Link>
-            <Link to="register">Register</Link>
-          </AuthLinks>
-      }
+      {auth._id ? (
+        <Logout
+          onClick={() => {
+            dispatch(logoutUser(null));
+          }}
+        >
+          Logout
+        </Logout>
+      ) : (
+        <AuthLinks>
+          <Link to="/login">Login</Link>
+          <Link to="register">Register</Link>
+        </AuthLinks>
+      )}
     </nav>
   );
 };

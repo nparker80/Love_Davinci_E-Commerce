@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 // import { decode } from 'jsonwebtoken';
-import { url } from './api';
+import { url } from "./api";
 import jwtDecode from "jwt-decode";
 
 const initialState = {
@@ -19,12 +19,12 @@ const initialState = {
 
 export const registerUser = createAsyncThunk(
   "auth/registerUser",
-  async (user, { rejectWithValue }) => {
+  async (values, { rejectWithValue }) => {
     try {
       const token = await axios.post(`${url}/register`, {
-        name: user.name,
-        email: user.email,
-        password: user.password,
+        name: values.name,
+        email: values.email,
+        password: values.password,
 
       });
       localStorage.setItem('token', token.data)
@@ -34,8 +34,24 @@ export const registerUser = createAsyncThunk(
       console.log(error.response.data);
       return rejectWithValue(error.response.data)
     }
-  }
-)
+  }); export const loginUser = createAsyncThunk(
+    "auth/loginUser",
+    async (values, { rejectWithValue }) => {
+      try {
+        const token = await axios.post(`${url}/login`, {
+          email: values.email,
+          password: values.password,
+        });
+
+        localStorage.setItem("token", token.data);
+        return token.data;
+      } catch (error) {
+        console.log(error.response);
+        return rejectWithValue(error.response.data);
+      }
+    }
+  );
+
 const authSlice = createSlice({
   name: "auth",
   initialState,
@@ -99,8 +115,33 @@ const authSlice = createSlice({
         registerError: action.payload,
       }
     });
+
+    builder.addCase(loginUser.pending, (state, action) => {
+      return { ...state, loginStatus: "pending" };
+    });
+    builder.addCase(loginUser.fulfilled, (state, action) => {
+      if (action.payload) {
+        const user = jwtDecode(action.payload);
+        return {
+          ...state,
+          token: action.payload,
+          name: user.name,
+          email: user.email,
+          _id: user._id,
+          loginStatus: "success",
+        };
+      } else return state;
+    });
+    builder.addCase(loginUser.rejected, (state, action) => {
+      return {
+        ...state,
+        loginStatus: "rejected",
+        loginError: action.payload,
+      };
+    });
   },
 });
+
 
 export const { loadUser, logoutUser } = authSlice.actions
 
