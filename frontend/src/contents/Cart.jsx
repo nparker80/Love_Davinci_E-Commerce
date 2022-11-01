@@ -1,7 +1,7 @@
 import "./Cart.scss";
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // Components
 import CartItem from "../components/CartItem";
@@ -13,7 +13,9 @@ import { addToCart, removeFromCart } from "../redux/actions/cartActions";
 
 
 const Cart = () => {
+  const auth = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
@@ -68,7 +70,15 @@ const Cart = () => {
 
           </div>
           <div>
-            <button>Proceed To Checkout</button>
+            {auth._id ? (
+              <button>Proceed to Checkout</button>
+            ) : (
+              <button
+                className="cart-login"
+                onClick={() => navigate("/login")}
+              >
+                Login for checkout
+              </button>)}
           </div>
         </div>
       </div>
