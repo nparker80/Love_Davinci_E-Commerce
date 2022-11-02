@@ -8,6 +8,7 @@ import CartItem from "../components/CartItem";
 
 // Actions
 import { addToCart, removeFromCart } from "../redux/actions/cartActions";
+import PayButton from "../PayButton";
 
 
 
@@ -19,7 +20,6 @@ const Cart = () => {
 
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
-
 
   useEffect(() => { }, []);
 
@@ -71,7 +71,7 @@ const Cart = () => {
           </div>
           <div>
             {auth._id ? (
-              <button>Proceed to Checkout</button>
+              <PayButton cartItems={cart.cartItems} />
             ) : (
               <button
                 className="cart-login"

@@ -13,6 +13,7 @@ import Back from './components/Back';
 import Sidebar from './components/Sidebar';
 import Login from './components/auth/Login';
 import Register from './components/auth/Register';
+import CheckoutSuccess from './components/CheckoutSuccess';
 
 function App() {
   const dispatch = useDispatch();
@@ -32,6 +33,7 @@ function App() {
           <Route exact path="/" element={<Home />} />
           <Route exact path="/product/:id" element={<Product />} />
           <Route exact path="/cart" element={<Cart />} />
+          <Route exact path="/checkout-success" element={<CheckoutSuccess />} />
           <Route exact path="/login" element={<Login />} />
           <Route exact path="/register" element={<Register />} />
         </Routes>
