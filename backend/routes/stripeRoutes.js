@@ -11,10 +11,10 @@ const stripe = Stripe(process.env.STRIPE_KEY);
 
 router.post("/create-checkout-session", async (req, res) => {
   const customer = await stripe.customers.create({
-    metadata: {
-      userId: req.body.userId,
-      cart: JSON.stringify(req.body.cartItems),
-    },
+    // metadata: {
+    //   userId: req.body.userId,
+    //   cart: JSON.stringify(req.body.cartItems),
+    // },
   });
 
   const line_items = req.body.cartItems.map((item) => {
@@ -23,8 +23,8 @@ router.post("/create-checkout-session", async (req, res) => {
         currency: "usd",
         product_data: {
           name: item.name,
-          images: [item.image],
-          description: item.desc,
+          images: [item.imageUrl],
+          description: item.description,
           metadata: {
             id: item.id,
           },
