@@ -11,10 +11,10 @@ const stripe = Stripe(process.env.STRIPE_KEY);
 
 router.post("/create-checkout-session", async (req, res) => {
   const customer = await stripe.customers.create({
-    // metadata: {
-    //   userId: req.body.userId,
-    //   cart: JSON.stringify(req.body.cartItems),
-    // },
+    metadata: {
+      userId: req.body.userId.toString(),
+      cart: JSON.stringify(req.body.cartItems.toString()),
+    },
   });
 
   const line_items = req.body.cartItems.map((item) => {
